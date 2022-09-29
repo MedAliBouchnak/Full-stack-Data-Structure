@@ -1,0 +1,51 @@
+ALGORITHM Read_Sentence
+VAR
+    Sum :INTEGER:=0;
+    i,count : INTEGER;
+    Set1 : ARRAY_OF INTEGER[4];
+    Set2 : ARRAY_OF INTEGER[6];
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+   
+
+BEGIN
+  write("Give the first set");
+  read(Set1);
+  write("Give the second set");
+  read(Set2);
+  
+  
+  FOR i FROM 0 TO Set1.length -1 STEP 1  DO
+       IF (htab.lookup(Set1[i]) = TRUE) THEN
+           count := htab.get(Set1[i]);
+           htab.insert(Set1[i],count+1);
+       ELSE
+           htab1.insert(Set1[i],1);
+       END_IF
+   END_FOR
+
+
+
+FOR i FROM 0 TO Set2.length -1 STEP 1  DO
+       IF (htab.lookup(Set2[i]) = TRUE) THEN
+           count := htab.get(Set2[i]);
+           htab.insert(Set2[i],count+1);
+       ELSE
+           htab.insert(Set2[i],1);
+       END_IF
+   END_FOR
+
+
+   FOR i FROM 0 TO Set1.length -1 STEP 1  DO
+       IF (htab.get(Set1[i]) = 1) THEN
+       Sum:=Sum+Set1[i];
+       END_IF
+   END_FOR
+
+
+   FOR i FROM 0 TO Set2.length -1 STEP 1  DO
+       IF (htab.get(Set2[i]) = 1) THEN
+       Sum:=Sum+Set2[i];
+       END_IF
+   END_FOR
+ write("Output:",Sum);
+END

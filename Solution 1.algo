@@ -1,0 +1,45 @@
+ALGORITHM Sum_diff
+VAR
+    Sum,s1,s2 :INTEGER:=0;
+    i,j,x,y: INTEGER; 
+
+    Set1 : ARRAY_OF INTEGER[x];
+    Set2 : ARRAY_OF INTEGER[y];
+
+BEGIN
+  write("Give the first set");
+  read(Set1);
+  write("Give the second set");
+  read(Set2);
+  FOR i FROM 0 TO Set1.lenght-1 STEP 1  DO
+    FOR j FROM 0 TO Set2.lenght-1 STEP 1  DO
+    Dif1:BOOLEAN:=FALSE;
+        IF (Set1[i]<>Set2[j]) THEN
+            Dif1:=TRUE;
+            BREAK;
+        END_IF
+    END_FOR
+  END_FOR
+  IF (Dif1=TRUE) THEN
+    s1:=s1+Set2[j];
+  END_IF
+
+  FOR i FROM 0 TO Set2.lenght-1 STEP 1  DO
+    FOR j FROM 0 TO Set1.lenght-1 STEP 1  DO
+    Dif2:BOOLEAN:=FALSE;
+        IF (Set2[i]<>Set1[j]) THEN
+            Dif2:=TRUE;
+            BREAK;
+        END_IF
+    END_FOR
+  END_FOR
+  IF (Dif2=TRUE) THEN
+    s2:=s2+Set1[j];
+  END_IF
+IF (s1 > s2) THEN
+    Sum:=s1
+ELSE
+    Sum:=s2
+END_IF
+write("Output:",Sum);
+END
